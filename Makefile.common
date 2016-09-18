@@ -1,0 +1,7 @@
+# Strict warnings for development
+CPPFLAGS += -Wall -Wextra -Wpedantic
+
+# Warnings are errors
+#CPPFLAGS += -Werror
+
+CXXFLAGS += -std=c++11
