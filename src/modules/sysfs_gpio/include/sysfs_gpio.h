@@ -102,9 +102,9 @@ class InterruptListener
 {
 public:
     // An interrupt routine has no parameters and returns nothing.
-    typedef void (*InterruptRoutine)();
+    typedef void (*InterruptRoutine)(void *data);
 
-    InterruptListener(GPIO &gpio, InterruptRoutine routine);
+    InterruptListener(GPIO &gpio, InterruptRoutine routine, void *data);
     ~InterruptListener();
 
 private:
@@ -112,6 +112,7 @@ private:
 
     bool running = true;
     InterruptRoutine routine;
+    void *data;
     std::thread thread = std::thread(&InterruptListener::listen, this);
 
     void listen();

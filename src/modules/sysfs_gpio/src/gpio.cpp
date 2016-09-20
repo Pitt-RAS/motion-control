@@ -380,8 +380,9 @@ void SoftwarePWMGenerator::generate()
 	}
 }
 
-InterruptListener::InterruptListener(GPIO &gpio, InterruptRoutine routine) :
-    gpio(gpio), routine(routine)
+InterruptListener::InterruptListener(GPIO &gpio,
+                                        InterruptRoutine routine, void *data) :
+    gpio(gpio), routine(routine), data(data)
 {}
 
 InterruptListener::~InterruptListener()
@@ -394,7 +395,7 @@ void InterruptListener::listen()
 {
     while (running) {
         gpio.wait();
-        routine();
+        routine(data);
     }
 }
 
