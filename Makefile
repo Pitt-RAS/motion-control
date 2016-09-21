@@ -5,7 +5,7 @@ CPPFLAGS += -Iinclude
 SRCS != ls src/*.cpp
 OBJS := ${SRCS:.cpp=.o}
 
-NAME := lib/libmotion.a
+NAME := lib/libmotion_control.a
 
 .PHONY: all clean
 
