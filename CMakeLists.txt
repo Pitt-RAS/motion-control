@@ -1,16 +1,36 @@
 cmake_minimum_required(VERSION 3.0)
 project(motion-control)
-message("Starting build on ${CMAKE_SYSTEM_NAME}")
+
+
+# Main Library
 
 include_directories(include)
-
-set(SOURCE_FILES src/dummy.cpp)
-set(CMAKE_CXX_FLAGS -std=c++11)
-
-add_library(motion_control ${SOURCE_FILES})
+add_library(motion_control src/dummy.cpp)
 
 
-if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-  message("Building Linux sysfs gpio driver")
+# Modules
+
+message("System is ${CMAKE_SYSTEM_NAME}")
+
+if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+  message("Sysfs GPIO module enabled")
   add_subdirectory(src/modules/sysfs_gpio)
+else()
+  message("Sysfs GPIO module disabled")
 endif()
+
+
+# Compiler Flags
+
+if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
+  set(STANDARD_FLAG -std=c++11)
+  set(WARNING_FLAGS "-Wall -Wextra -Wpedantic -Werror")
+elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+  set(STANDARD_FLAG -std=c++11)
+  set(WARNING_FLAGS "-Wall -Wextra -Wpedantic -Werror")
+elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
+  set(STANDARD_FLAG "")
+  set(WARNING_FLAGS "/W4 /WX")
+endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${STANDARD_FLAG} ${WARNING_FLAGS}")
