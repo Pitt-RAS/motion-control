@@ -1,0 +1,12 @@
+language: c
+os: linux
+
+sudo: true
+
+env: 
+   - TYPE=x86gcc
+   - TYPE=x86clang
+   - TYPE=pi3
+compiler: gcc
+script:
+  - ./travis.sh
