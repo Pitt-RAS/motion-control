@@ -4,14 +4,14 @@
 #include "encoder.h"
 #include "motor.h"
 
-#include "FixedSizeStack.h"
-#include "Time.h"
+#include <motion_control/fixed_size_stack.h>
+#include <motion_control/time.h>
 
 
-#include "ProfilePoint.h"
-#include "MotionProfile1D.h"
-#include "PIDController.h"
+#include "profile_point.h"
+#include "motion_profile_1d.h"
+#include "pid_controller.h"
 
-#include "TrapezoidalMotionProfile.h"
+#include "trapezoidal_motion_profile.h"
 
 #endif

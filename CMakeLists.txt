@@ -1,18 +1,13 @@
 cmake_minimum_required(VERSION 3.0)
 project(motion-control)
 
-# Set the target name to the system we are building on
-# Need to look into how this behavies when crosscompiling
-set(TARGET_BUILD_PLATFORM ${CMAKE_SYSTEM_NAME})
-
 
 # Main Library
 include_directories(include)
-add_library(motion_control src/dummy.cpp src/platforms/${TARGET_BUILD_PLATFORM}/Time.cpp src/Time.cpp src/FixedSizeStack.cpp src/TrapezoidalMotionProfile.cpp src/MotionProfile1D.cpp)
+add_library(motion_control src/dummy.cpp src/platforms/${CMAKE_SYSTEM_NAME}/time.cpp src/time.cpp src/fixed_size_stack.cpp src/trapezoidal_motion_profile.cpp src/motion_profile_1d.cpp)
 
 
 # Modules
-
 message("System is ${CMAKE_SYSTEM_NAME}")
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
@@ -36,10 +31,3 @@ elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
 endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${STANDARD_FLAG} ${WARNING_FLAGS}")
-
-if (BUILD_TEST)
-  add_subdirectory(gtest)
-  set(BUILD_GMOCK OFF)
-  set(BUILD_GTEST ON)
-  add_subdirectory(src/test)
-endif()
