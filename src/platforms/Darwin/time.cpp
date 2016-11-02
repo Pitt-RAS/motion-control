@@ -5,15 +5,19 @@
 
 
 namespace MotionControl {
-    double Timer::now() {
-        static timeval time;
-        gettimeofday(&time, NULL);
 
-        return (double)time.tv_sec + (double)time.tv_usec*(double)1e-6;
-    }
+double Timer::now()
+{
+    static timeval time;
+    gettimeofday(&time, NULL);
 
-    void Timer::delay(double t) {
-        unsigned long wait = floor(t*1000000);
-        usleep(wait);
-    }
+    return (double)time.tv_sec + (double)time.tv_usec*(double)1e-6;
+}
+
+void Timer::delay(double t)
+{
+    unsigned long wait = floor(t*1000000);
+    usleep(wait);
+}
+
 }

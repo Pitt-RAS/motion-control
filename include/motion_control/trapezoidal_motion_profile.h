@@ -5,7 +5,15 @@
 #include <motion_control/motion_profile_1d.h>
 
 namespace MotionControl {
-    class TrapezoidalMotionProfile : public MotionProfile1D {
+
+class TrapezoidalMotionProfile : public MotionProfile1D {
+public:
+    TrapezoidalMotionProfile(double target, double maxVelocity,
+                                                    double maxAcceleration);
+    ProfilePoint1D get_at_time(double t);
+    double duration();
+
+private:
     FixedSizeStack<MotionProfile1D> *points;
 
     double vf, vi;
@@ -15,14 +23,8 @@ namespace MotionControl {
     double tToMaxVel, dToMaxVel;
     double tToVf, dToVf;
     double tCruising, dCruising;
+};
 
-
-    public:
-        TrapezoidalMotionProfile(double target, double maxVelocity, double maxAcceleration);
-        ProfilePoint1D getAtTime(double t);
-        double duration();
-
-    };
 }
 
 #endif //MOTION_CONTROL_TRAPEZOIDALMOTIONPROFILE_H

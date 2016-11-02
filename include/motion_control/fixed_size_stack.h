@@ -2,22 +2,26 @@
 #define MOTION_CONTROL_FIXEDSIZESTACK_H
 
 namespace MotionControl {
+
 template<class T>
 class FixedSizeStack {
-int len;
-int maxSize;
-T *buffer;
 public:
-FixedSizeStack(int maxSize);
+    FixedSizeStack(int maxSize);
 
-~FixedSizeStack();
+    ~FixedSizeStack();
 
-T* get(int idx);
+    T* get(int idx);
 
-void push(T* item);
+    void push(T* item);
 
-int size();
+    int size();
+
+private:
+    int len;
+    int maxSize;
+    T *buffer;
 };
+
 }
 
 
