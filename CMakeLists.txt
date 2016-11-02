@@ -3,13 +3,11 @@ project(motion-control)
 
 
 # Main Library
-
 include_directories(include)
-add_library(motion_control src/dummy.cpp)
+add_library(motion_control src/dummy.cpp src/platforms/${CMAKE_SYSTEM_NAME}/time.cpp src/time.cpp src/fixed_size_stack.cpp src/trapezoidal_motion_profile.cpp src/motion_profile_1d.cpp)
 
 
 # Modules
-
 message("System is ${CMAKE_SYSTEM_NAME}")
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
@@ -21,7 +19,6 @@ endif()
 
 
 # Compiler Flags
-
 if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
   set(STANDARD_FLAG -std=c++11)
   set(WARNING_FLAGS "-Wall -Wextra -Wpedantic -Werror")
