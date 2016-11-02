@@ -14,8 +14,6 @@ public:
     double duration();
 
 private:
-    FixedSizeStack<MotionProfile1D> *points;
-
     double vf, vi;
 
     double target, maxVelocity, maxAcceleration;
