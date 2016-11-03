@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.0)
+project(motion_control_test)
+
+include_directories(include)
+
+add_executable(motion_control_test main.cpp test_time.cpp test_trapezoidal_motion.cpp)
+target_link_libraries(motion_control_test motion_control)
