@@ -4,11 +4,12 @@
 
 using namespace MotionControl;
 
-static double epsilon = 0.01;
-double delay = 0.1;
 
 TEST_CASE("Timer", "[timer]")
 {
+    double epsilon = 0.01;
+    double delay = 0.1;
+
     SECTION("now() and delay()")
     {
         double start = Timer::now();

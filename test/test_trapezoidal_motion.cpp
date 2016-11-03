@@ -3,18 +3,17 @@
 
 using namespace MotionControl;
 
-// dt Used for numerical integration
-double dt = 0.01;
-
-double target = 100;
-double maxVelocity = 10;
-double maxAcceleration = 5;
-
-static double epsilon = 0.001;
-
-
-TEST_CASE("TrapezoidalMotionProfile", "[traprzoidal]")
+TEST_CASE("TrapezoidalMotionProfile", "[trapezoidal]")
 {
+    // dt Used for numerical integration
+    double dt = 0.01;
+
+    double target = 100;
+    double maxVelocity = 10;
+    double maxAcceleration = 5;
+
+    double epsilon = 0.001;
+
     SECTION("integrate velocity and see if we end up at the target")
     {
         TrapezoidalMotionProfile profile(target, maxVelocity, maxAcceleration);

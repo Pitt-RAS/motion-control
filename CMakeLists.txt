@@ -31,7 +31,7 @@ elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
 endif()
 
 if (${BUILD_TEST})
-    add_subdirectory(src/test/)
+    add_subdirectory(test)
 endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${STANDARD_FLAG} ${WARNING_FLAGS}")
