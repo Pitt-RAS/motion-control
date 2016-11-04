@@ -30,4 +30,8 @@ elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
   set(WARNING_FLAGS "/W4 /WX")
 endif()
 
+if (${BUILD_TEST})
+    add_subdirectory(test)
+endif()
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${STANDARD_FLAG} ${WARNING_FLAGS}")
