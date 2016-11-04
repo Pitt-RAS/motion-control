@@ -1,4 +1,4 @@
-#include <motion_control/Time.h>
+#include <motion_control/time.h>
 #include <math.h>
 #include <catch.hpp>
 
