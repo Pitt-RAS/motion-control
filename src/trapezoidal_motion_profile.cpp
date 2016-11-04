@@ -4,8 +4,7 @@
 namespace MotionControl {
 
 TrapezoidalMotionProfile::TrapezoidalMotionProfile
-    (double target, double maxVelocity, double maxAcceleration) :
-    MotionProfile1D()
+    (double target, double maxVelocity, double maxAcceleration)
 {
     vi = 0;
     vf = 0;
