@@ -1,0 +1,12 @@
+if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
+  set(STANDARD_FLAG -std=c++11)
+  set(WARNING_FLAGS "-Wall -Wextra -Wpedantic -Werror")
+elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+  set(STANDARD_FLAG -std=c++11)
+  set(WARNING_FLAGS "-Wall -Wextra -Wpedantic -Werror")
+elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
+  set(STANDARD_FLAG "")
+  set(WARNING_FLAGS "/W4 /WX")
+endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${STANDARD_FLAG} ${WARNING_FLAGS}")

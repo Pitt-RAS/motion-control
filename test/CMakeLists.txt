@@ -1,3 +1,5 @@
+include(../CompilerFlags.cmake)
+
 cmake_minimum_required(VERSION 3.0)
 project(motion_control_test)
 
