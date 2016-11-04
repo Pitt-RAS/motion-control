@@ -1,3 +1,5 @@
+include(../../../CompilerFlags.cmake)
+
 include_directories(include)
 
 add_library(sysfs_gpio src/gpio.cpp)
