@@ -43,4 +43,14 @@ TEST_CASE("TrapezoidalMotionProfile", "[trapezoidal]")
         REQUIRE(last.pos == 100);
     }
 
+    SECTION("pregenerate profile")
+    {
+        TrapezoidalMotionProfile profile(target, maxVelocity, maxAcceleration);
+        PregeneratedMotionProfile<100> profile_table(&profile);
+
+        REQUIRE(profile_table.size() == 100);
+        REQUIRE(profile_table.get(99)->pos == target);
+        REQUIRE(profile_table.get(0)->pos == 0);
+    }
+
 }
