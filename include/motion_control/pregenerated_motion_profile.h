@@ -8,32 +8,40 @@ namespace MotionControl {
 
 template<const int steps>
 class PregeneratedMotionProfile {
-    ProfilePoint1D points[steps];
 public:
-    PregeneratedMotionProfile(MotionProfile1D *profile)
-    {
-        double dt = profile->duration()/(steps-1);
-        double t = 0;
-        for ( int i = 0; i < steps; i++ )
-        {
-            points[i] = profile->get_at_time(t);
-            t += dt;
-        }
-    }
-
-    int size()
-    {
-        return steps;
-    }
-
-    ProfilePoint1D* get(int idx) {
-        if (idx < 0 || idx > steps - 1)
-            return NULL;
-        return &points[idx];
-    }
+    PregeneratedMotionProfile(MotionProfile1D *profile);
+    int size();
+    ProfilePoint1D* get(int idx);
+private:
+    ProfilePoint1D points[steps];
 };
 
+template<const int steps>
+PregeneratedMotionProfile<steps>::PregeneratedMotionProfile(MotionProfile1D *profile)
+{
+    double dt = profile->duration()/(steps-1);
+    double t = 0;
+    for ( int i = 0; i < steps; i++ )
+    {
+        points[i] = profile->get_at_time(t);
+        t += dt;
+    }
 }
 
+
+template<const int steps>
+int PregeneratedMotionProfile<steps>::size()
+{
+    return steps;
+}
+
+template<const int steps>
+ProfilePoint1D* PregeneratedMotionProfile<steps>::get(int idx) {
+    if (idx < 0 || idx > steps - 1)
+        return NULL;
+    return &points[idx];
+}
+
+}
 
 #endif
