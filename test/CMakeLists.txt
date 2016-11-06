@@ -1,11 +1,8 @@
 include(../CompilerFlags.cmake)
 
-cmake_minimum_required(VERSION 3.0)
-project(motion_control_test)
-
 include_directories(include)
 
-add_executable(motion_control_test
+add_executable(test_motion_control
   main.cpp
   test_time.cpp
   test_trapezoidal_motion.cpp
@@ -14,4 +11,4 @@ add_executable(motion_control_test
   test_math.cpp
 )
 
-target_link_libraries(motion_control_test motion_control)
+target_link_libraries(test_motion_control motion_control)
