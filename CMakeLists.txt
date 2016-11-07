@@ -7,7 +7,7 @@ include(CompilerFlags.cmake)
 
 # Main Library
 include_directories(include)
-add_library(motion_control src/dummy.cpp src/platforms/${CMAKE_SYSTEM_NAME}/time.cpp src/time.cpp src/fixed_size_stack.cpp src/trapezoidal_motion_profile.cpp src/motion_profile_1d.cpp)
+add_library(motion_control src/dummy.cpp src/platforms/${CMAKE_SYSTEM_NAME}/time.cpp src/time.cpp src/trapezoidal_motion_profile.cpp)
 
 
 # Modules
