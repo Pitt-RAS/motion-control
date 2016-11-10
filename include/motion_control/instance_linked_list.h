@@ -3,6 +3,8 @@
 
 #include <motion_control/instance_list_node.h>
 
+#include <cstddef>
+
 namespace MotionControl
 {
 template <class T>
@@ -22,32 +24,32 @@ private:
 template <class T>
 InstanceLinkedList<T>::InstanceLinkedList()
 {
-    root = 0;
-    end = 0;
+    root = nullptr;
+    end = nullptr;
 }
 
 template <class T>
 InstanceLinkedList<T>::~InstanceLinkedList()
 {
-    while ( root != 0 )
+    while ( root != nullptr )
         remove(root);
 }
 
 template <class T>
 void InstanceLinkedList<T>::add(InstanceListNode<T>* n)
 {
-    if ( end == 0 )
+    if ( end == nullptr )
     {
         root = n;
         end = n;
-        n->next = 0;
-        n->prev = 0;
+        n->next = nullptr;
+        n->prev = nullptr;
     }
     else
     {
         end->next = n;
         n->prev = end;
-        n->next = 0;
+        n->next = nullptr;
         end = n;
     }
 
@@ -60,17 +62,17 @@ void InstanceLinkedList<T>::remove(InstanceListNode<T>* n)
     if ( n->list != this )
         return;
 
-    if ( n->next != 0 )
+    if ( n->next != nullptr )
         n->next->prev = n->prev;
     else
         end = n->prev;
 
-    if ( n->prev != 0 )
+    if ( n->prev != nullptr )
         n->prev->next = n->next;
     else
         root = n->next;
 
-    n->list = 0;
+    n->list = nullptr;
 }
 
 template<class T>

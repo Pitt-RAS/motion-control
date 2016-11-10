@@ -9,7 +9,7 @@ Runner::Runner() : list() {
 void Runner::add(Runnable *runnable) {
     // TODO: This currently silently fails - there should probably be some error thrown
     // because a Runnable can't be a member of two runners.
-    if ( runnable->node.list == 0)
+    if ( !runnable->node.in_list() )
         list.add(&runnable->node);
 }
 
@@ -25,7 +25,7 @@ void Runner::run() {
     while ( node != 0 )
     {
         node->get()->run(dt);
-        node = node->next;
+        node = node->get_next();
     }
 }
 
