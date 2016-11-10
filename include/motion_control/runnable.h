@@ -12,6 +12,6 @@ public:
     InstanceListNode<Runnable*> node;
     virtual void run(double dt) = 0;
 };
-};
+}
 
 #endif

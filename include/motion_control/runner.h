@@ -17,6 +17,6 @@ private:
     InstanceLinkedList<Runnable*> list;
 };
 
-};
+}
 
 #endif

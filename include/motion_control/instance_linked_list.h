@@ -80,8 +80,6 @@ InstanceListNode<T>* InstanceLinkedList<T>::get_root()
 {
     return root;
 }
-
-
-};
+}
 
 #endif

@@ -60,6 +60,6 @@ template <class T> T InstanceListNode<T>::get()
     return element;
 }
 
-};
+}
 
 #endif
