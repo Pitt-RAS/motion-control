@@ -1,6 +1,8 @@
 #ifndef MOTION_CONTROL
 #define MOTION_CONTROL
 
+#include <motion_control/math.h>
+
 #include <motion_control/time.h>
 
 #include <motion_control/profile_point.h>
