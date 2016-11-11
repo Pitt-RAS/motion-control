@@ -1,6 +1,8 @@
 #ifndef MOTION_CONTROL_INSTANCE_LIST_NODE_H
 #define MOTION_CONTROL_INSTANCE_LIST_NODE_H
 
+#include <cstddef>
+
 namespace MotionControl
 {
 
@@ -28,21 +30,21 @@ private:
 
 template <class T> InstanceListNode<T>::InstanceListNode(T element)
 {
-    list = 0;
-    prev = 0;
-    next = 0;
+    list = nullptr;
+    prev = nullptr;
+    next = nullptr;
     this->element = element;
 }
 
 template <class T> InstanceListNode<T>::~InstanceListNode()
 {
-    if ( list != 0 )
+    if ( list != nullptr )
         list->remove(this);
 }
 
 template <class T> bool InstanceListNode<T>::in_list()
 {
-    return list != 0;
+    return list != nullptr;
 }
 
 template <class T> InstanceListNode<T>* InstanceListNode<T>::get_next()
