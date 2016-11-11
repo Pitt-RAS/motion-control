@@ -18,7 +18,7 @@ TEST_CASE("TrapezoidalMotionProfile", "[trapezoidal]")
     {
         TrapezoidalMotionProfile profile(target, maxVelocity, maxAcceleration);
 
-        int steps = profile.duration()/dt;
+        int steps = static_cast<int>(profile.duration()/dt);
 
         REQUIRE(steps != 0);
 
