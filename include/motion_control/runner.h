@@ -10,8 +10,8 @@ class Runner
 {
 public:
     Runner();
-    void add(Runnable *runnable);
-    void remove(Runnable *runnable);
+    bool add(Runnable *runnable);
+    bool remove(Runnable *runnable);
     void run();
 private:
     InstanceLinkedList<Runnable*> list;

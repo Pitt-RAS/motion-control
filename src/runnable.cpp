@@ -2,7 +2,7 @@
 
 namespace MotionControl
 {
-    Runnable::Runnable() : node(this)
-    {
-    }
+Runnable::Runnable() : node(this)
+{
+}
 }

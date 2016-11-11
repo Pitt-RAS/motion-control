@@ -13,8 +13,8 @@ class InstanceLinkedList
 public:
     InstanceLinkedList();
     ~InstanceLinkedList();
-    void add(InstanceListNode<T>* n);
-    void remove(InstanceListNode<T>* n);
+    bool add(InstanceListNode<T>* n);
+    bool remove(InstanceListNode<T>* n);
     InstanceListNode<T>* get_root();
 private:
     InstanceListNode<T>* root;
@@ -36,8 +36,11 @@ InstanceLinkedList<T>::~InstanceLinkedList()
 }
 
 template <class T>
-void InstanceLinkedList<T>::add(InstanceListNode<T>* n)
+bool InstanceLinkedList<T>::add(InstanceListNode<T>* n)
 {
+    if ( n->list != nullptr )
+        return false;
+
     if ( end == nullptr )
     {
         root = n;
@@ -54,13 +57,15 @@ void InstanceLinkedList<T>::add(InstanceListNode<T>* n)
     }
 
     n->list = this;
+
+    return true;
 }
 
 template <class T>
-void InstanceLinkedList<T>::remove(InstanceListNode<T>* n)
+bool InstanceLinkedList<T>::remove(InstanceListNode<T>* n)
 {
     if ( n->list != this )
-        return;
+        return false;
 
     if ( n->next != nullptr )
         n->next->prev = n->prev;
@@ -73,6 +78,8 @@ void InstanceLinkedList<T>::remove(InstanceListNode<T>* n)
         root = n->next;
 
     n->list = nullptr;
+
+    return true;
 }
 
 template<class T>

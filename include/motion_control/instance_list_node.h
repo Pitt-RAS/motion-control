@@ -9,7 +9,6 @@ template <class T> class InstanceLinkedList;
 template <class T>
 class InstanceListNode
 {
-    friend class InstanceLinkedList<T>;
 public:
     InstanceListNode(T element);
     ~InstanceListNode();
@@ -20,6 +19,7 @@ public:
 
     T get();
 private:
+    friend class InstanceLinkedList<T>;
     InstanceLinkedList<T>* list;
     InstanceListNode<T>* prev;
     InstanceListNode<T>* next;
