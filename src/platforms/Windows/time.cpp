@@ -29,6 +29,6 @@ double Timer::now()
 
 void Timer::delay(double t)
 {
-    Sleep(t*1000.0);
+    Sleep(static_cast<DWORD>(t*1000.0));
 }
 }
