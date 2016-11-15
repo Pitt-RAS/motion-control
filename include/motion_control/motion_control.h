@@ -5,7 +5,7 @@
 
 #include <motion_control/time.h>
 
-#include <motion_control/profile_point.h>
+#include <motion_control/system_state.h>
 
 #include <motion_control/motion_profile_1d.h>
 #include <motion_control/trapezoidal_motion_profile.h>

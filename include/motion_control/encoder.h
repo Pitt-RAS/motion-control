@@ -2,6 +2,7 @@
 #define MOTION_ENCODER_H
 
 #include <cinttypes>
+#include <motion_control/system_state.h>
 
 namespace MotionControl {
 
@@ -21,6 +22,8 @@ public:
 
     // Sets the count to an arbitrary value. Returns success.
     virtual bool count(int_fast32_t value) = 0;
+
+    virtual SystemState* get_state() = 0;
 };
 
 }

@@ -9,7 +9,7 @@ class TrapezoidalMotionProfile : public MotionProfile1D {
 public:
     TrapezoidalMotionProfile(double target, double maxVelocity,
                                                     double maxAcceleration);
-    virtual ProfilePoint1D get_at_time(double t);
+    virtual SystemState get_at_time(double t);
     virtual double duration();
 
 private:

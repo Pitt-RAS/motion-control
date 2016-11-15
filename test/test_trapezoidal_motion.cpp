@@ -25,7 +25,7 @@ TEST_CASE("TrapezoidalMotionProfile", "[trapezoidal]")
         double posFromVel = 0;
         for ( int i = 0; i < steps; i++ ) {
             double t = i * dt;
-            ProfilePoint1D p = profile.get_at_time(t);
+            SystemState p = profile.get_at_time(t);
 
             posFromVel += p.vel * dt;
         }
@@ -37,7 +37,7 @@ TEST_CASE("TrapezoidalMotionProfile", "[trapezoidal]")
     {
         TrapezoidalMotionProfile profile(target, maxVelocity, maxAcceleration);
 
-        ProfilePoint1D last = profile.get_at_time(profile.duration());
+        SystemState last = profile.get_at_time(profile.duration());
 
         REQUIRE(profile.duration() != 0);
         REQUIRE(last.pos == 100);

@@ -31,9 +31,9 @@ TrapezoidalMotionProfile::TrapezoidalMotionProfile
     }
 }
 
-ProfilePoint1D TrapezoidalMotionProfile::get_at_time(double t)
+SystemState TrapezoidalMotionProfile::get_at_time(double t)
 {
-    MotionControl::ProfilePoint1D point;
+    SystemState point;
 
     point.t = t;
 
@@ -45,12 +45,14 @@ ProfilePoint1D TrapezoidalMotionProfile::get_at_time(double t)
     {
         point.pos = (0.5) * maxAcceleration * (t*t);
         point.vel = (maxAcceleration * t) + vi;
+        point.acc = maxAcceleration;
     }
     else if ( t < (tToMaxVel+tCruising) )
     {
         double i = t-tToMaxVel;
         point.pos = dToMaxVel + (maxVelocity * i);
         point.vel = maxVelocity;
+        point.acc = 0;
     }
     else if ( t <= (tToMaxVel+tToVf+tCruising) )
     {
@@ -58,12 +60,17 @@ ProfilePoint1D TrapezoidalMotionProfile::get_at_time(double t)
         point.pos = (dCruising + dToMaxVel) + (maxVelocity * i)
                                             + (0.5) * -maxAcceleration * (i*i);
         point.vel = maxVelocity + ((-maxAcceleration) * i);
+        point.acc = -maxAcceleration;
     }
 
     if ( t == tToMaxVel+tToVf+tCruising )
     {
         point.pos = target;
         point.vel = vf;
+        if ( vf == 0 )
+            point.acc = 0;
+        else
+            point.acc = -maxAcceleration;
     }
 
     return point;
