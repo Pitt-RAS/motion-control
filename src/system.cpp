@@ -21,11 +21,11 @@ void System::run(double dt) {
         double output = 0;
         SystemState* current = encoder->get_state();
 
-        InstanceListNode<Controller*> *node = list.get_root();
-        while ( node != nullptr )
+        InstanceListNode<Controller*> *pos = list.get_root();
+        while ( pos != nullptr )
         {
-            output += node->get()->calculate(dt, current, desired);
-            node = node->get_next();
+            output += pos->get()->calculate(dt, current, desired);
+            pos = pos->get_next();
         }
 
         motor->voltage(output);
@@ -33,11 +33,11 @@ void System::run(double dt) {
 }
 
 void System::reset() {
-    InstanceListNode<Controller*> *node = list.get_root();
-    while ( node != nullptr )
+    InstanceListNode<Controller*> *pos = list.get_root();
+    while ( pos != nullptr )
     {
-        node->get()->reset();
-        node = node->get_next();
+        pos->get()->reset();
+        pos = pos->get_next();
     }
 }
 }
