@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <poll.h>
 #include <sysfs_gpio.h>
+#include <motion_control/math.h>
 
 namespace SysfsGPIO {
 
@@ -315,20 +316,20 @@ SoftwarePWMGenerator::~SoftwarePWMGenerator()
     thread.join();
 }
 
-uint_fast16_t SoftwarePWMGenerator::duty() const
+float SoftwarePWMGenerator::duty() const
 {
-    uint_fast64_t converted = UINT16_MAX;
-    converted = converted * on_time / period;
+    float converted = on_time;
+    converted /= period;
 
     return converted;
 }
 
-bool SoftwarePWMGenerator::duty(uint_fast16_t value)
+bool SoftwarePWMGenerator::duty(float value)
 {
-    uint_fast64_t converted = UINT16_MAX & value;
-    converted = converted * period / UINT16_MAX;
+    if (MotionControl::constrain(value, 0.0f, 1.0f) != value)
+        return false;
 
-    on_time = converted;
+    on_time = value * period;
     off_time = period - on_time;
 
     return true;

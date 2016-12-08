@@ -73,8 +73,8 @@ public:
     SoftwarePWMGenerator(GPIO &gpio);
     ~SoftwarePWMGenerator();
 
-    uint_fast16_t duty() const;
-    bool duty(uint_fast16_t value);
+    float duty() const;
+    bool duty(float value);
 
     uint_fast32_t frequency() const;
     bool frequency(uint_fast32_t value);
