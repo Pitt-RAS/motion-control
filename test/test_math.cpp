@@ -34,7 +34,7 @@ TEST_CASE("Absolute value flips negative values", "[abs]")
 {
     REQUIRE(abs(int8_t(-10)) == 10);
     REQUIRE(abs(int16_t(-1000)) == 1000);
-    REQUIRE(abs(int32_t(-1000000000)) == 1000);
+    REQUIRE(abs(int32_t(-1000000000)) == 1000000000);
 }
 
 TEST_CASE("Absolute value does not flip non-negative values", "[abs]")
@@ -42,7 +42,7 @@ TEST_CASE("Absolute value does not flip non-negative values", "[abs]")
     REQUIRE(abs(int(0)) == 0);
     REQUIRE(abs(int8_t(10)) == 10);
     REQUIRE(abs(int16_t(1000)) == 1000);
-    REQUIRE(abs(int32_t(1000000000)) == 1000);
+    REQUIRE(abs(int32_t(1000000000)) == 1000000000);
 }
 
 TEST_CASE("Constrain does not modify value within range", "[constrain]")
