@@ -1,7 +1,7 @@
 if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
   set(STANDARD_FLAG -std=c++11)
   set(WARNING_FLAGS "-Wall -Wextra -Wpedantic -Werror")
-elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "AppleClang")
   set(STANDARD_FLAG -std=c++11)
   set(WARNING_FLAGS "-Wall -Wextra -Wpedantic -Werror")
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
