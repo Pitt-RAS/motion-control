@@ -27,7 +27,7 @@ TrapezoidalMotionProfile::TrapezoidalMotionProfile
         tToMaxVel = tToVf = fabs(sqrt(2.0 * maxAcceleration * (target / 2.0)) / maxAcceleration);
         tCruising = dCruising = 0;
         dToMaxVel = dToVf = target / 2.0;
-        maxVelocity = maxAcceleration*tToMaxVel;
+        this->maxVelocity = maxAcceleration*tToMaxVel;
     }
 }
 

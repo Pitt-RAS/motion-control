@@ -53,4 +53,21 @@ TEST_CASE("TrapezoidalMotionProfile", "[trapezoidal]")
         REQUIRE(profile_table.get(0)->pos == 0);
     }
 
+    SECTION("integrate position from velocity in triangular case ")
+    {
+        TrapezoidalMotionProfile profile(5, 10, 10);
+
+        int steps = static_cast<int>(profile.duration()/dt);
+        REQUIRE(steps != 0);
+
+        double posFromVel = 0;
+        for ( int i = 0; i < steps; i++ ) {
+            double t = i * dt;
+            ProfilePoint1D p = profile.get_at_time(t);
+            posFromVel += p.vel * dt;
+        }
+
+        REQUIRE(fabs(5-posFromVel) < epsilon);
+    }
+
 }
