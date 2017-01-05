@@ -22,8 +22,6 @@ public:
 
     // Sets the count to an arbitrary value. Returns success.
     virtual bool count(int_fast32_t value) = 0;
-
-    virtual SystemState* get_state() = 0;
 };
 
 }

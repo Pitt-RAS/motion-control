@@ -12,6 +12,7 @@ add_executable(motion_control_test
   test_instance_list.cpp
   test_runner.cpp
   test_math.cpp
+  test_system.cpp
 )
 
 target_link_libraries(motion_control_test motion_control)

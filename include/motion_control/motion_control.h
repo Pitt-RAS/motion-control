@@ -14,7 +14,10 @@
 #include <motion_control/encoder.h>
 #include <motion_control/motor.h>
 
+#include <motion_control/controller.h>
 #include <motion_control/pid_controller.h>
+
+#include <motion_control/system.h>
 
 #include <motion_control/runner.h>
 #include <motion_control/runnable.h>
