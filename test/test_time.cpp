@@ -7,8 +7,8 @@ using namespace MotionControl;
 
 TEST_CASE("Timer", "[timer]")
 {
-    double epsilon = 0.01;
-    double delay = 0.1;
+    double epsilon = 0.02;
+    double delay = 0.2;
 
     SECTION("now() and delay()")
     {
