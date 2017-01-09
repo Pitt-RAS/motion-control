@@ -49,7 +49,7 @@ public:
     float calculate(double dt, int_fast32_t current, SystemState *desired)
     {
         // (dt/dt) avoids an unused parameter error from Wpedantic + Werror
-        return desired->pos + (double)current * (dt/dt);
+        return static_cast<float>(desired->pos) + static_cast<float>(current) * static_cast<float>(dt/dt);
     }
 
     void reset()
