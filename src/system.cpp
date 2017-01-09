@@ -27,7 +27,7 @@ void System::run(double dt)
 {
     if ( desired != nullptr )
     {
-        double output = 0;
+        float output = 0;
         int_fast32_t current = encoder->count();
 
         InstanceListNode<Controller*> *pos = list.get_root();

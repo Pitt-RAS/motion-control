@@ -12,7 +12,7 @@ class Controller
 {
 public:
     Controller();
-    virtual double calculate(double dt, int_fast32_t current, SystemState *desired) = 0;
+    virtual float calculate(double dt, int_fast32_t current, SystemState *desired) = 0;
     virtual void reset() = 0;
 private:
     InstanceListNode<Controller*> node;
