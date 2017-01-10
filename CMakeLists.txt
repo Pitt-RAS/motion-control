@@ -24,3 +24,9 @@ endif()
 if (${BUILD_TEST})
     add_subdirectory(test)
 endif()
+
+
+install(TARGETS motion_control
+        ARCHIVE DESTINATION lib)
+install(DIRECTORY include/motion_control
+        DESTINATION include)
