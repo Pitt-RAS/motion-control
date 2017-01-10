@@ -11,9 +11,9 @@ class PregeneratedMotionProfile {
 public:
     PregeneratedMotionProfile(MotionProfile1D *profile);
     int size();
-    ProfilePoint1D* get(int idx);
+    SystemState* get(int idx);
 private:
-    ProfilePoint1D points[steps];
+    SystemState points[steps];
 };
 
 template<const int steps>
@@ -36,7 +36,7 @@ int PregeneratedMotionProfile<steps>::size()
 }
 
 template<const int steps>
-ProfilePoint1D* PregeneratedMotionProfile<steps>::get(int idx) {
+SystemState* PregeneratedMotionProfile<steps>::get(int idx) {
     if (idx < 0 || idx > steps - 1)
         return NULL;
     return &points[idx];

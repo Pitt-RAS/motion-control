@@ -3,17 +3,11 @@
 
 namespace MotionControl {
 
-struct ProfilePoint1D {
+struct SystemState {
     double t;
     double pos;
     double vel;
-};
-
-struct ProfilePoint2D {
-    double t;
-    ProfilePoint1D left;
-    ProfilePoint1D right;
-    double theta;
+    double acc;
 };
 
 }

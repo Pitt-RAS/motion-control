@@ -2,6 +2,7 @@
 #define MOTION_ENCODER_H
 
 #include <cinttypes>
+#include <motion_control/system_state.h>
 
 namespace MotionControl {
 
