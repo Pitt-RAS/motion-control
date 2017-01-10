@@ -13,19 +13,19 @@ namespace MotionControl
 class System : public Runnable
 {
 public:
-    System(Motor* motor, Encoder* encoder);
-    void set_state(SystemState *state);
+    System(Motor& motor, Encoder& encoder);
+    void set_state(SystemState state);
 
     void reset();
 
-    bool add_controller(Controller *controller);
-    bool remove_controller(Controller *controller);
+    bool add_controller(Controller& controller);
+    bool remove_controller(Controller& controller);
 
     void run(double dt);
 private:
-    Motor* motor;
-    Encoder* encoder;
-    SystemState* desired;
+    Motor& motor;
+    Encoder& encoder;
+    SystemState desired;
     InstanceLinkedList<Controller*> list;
 };
 }

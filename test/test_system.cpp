@@ -46,10 +46,10 @@ public:
     {
     }
 
-    float calculate(double dt, int_fast32_t current, SystemState *desired)
+    float calculate(double dt, int_fast32_t current, SystemState& desired)
     {
         // (dt/dt) avoids an unused parameter error from Wpedantic + Werror
-        return static_cast<float>(desired->pos) + static_cast<float>(current) * static_cast<float>(dt/dt);
+        return static_cast<float>(desired.pos) + static_cast<float>(current) * static_cast<float>(dt/dt);
     }
 
     void reset()
@@ -73,11 +73,11 @@ TEST_CASE("System", "[system]")
         actuator.count(5);
 
         // Create the system with our test actuator as the encoder and motor
-        System actuatorSystem(&actuator, &actuator);
+        System actuatorSystem(actuator, actuator);
 
         // Set our desired state for the system
         // (this is provided to each controller)
-        actuatorSystem.set_state(&desired);
+        actuatorSystem.set_state(desired);
 
         // Setup the controller
         // This controller sums the desired position
@@ -85,7 +85,7 @@ TEST_CASE("System", "[system]")
         SimpleController controller;
 
         // Add this controller to the system
-        actuatorSystem.add_controller(&controller);
+        actuatorSystem.add_controller(controller);
 
         // Run this system for one loop (dt=1, it is not used by this test)
         actuatorSystem.run(1);
